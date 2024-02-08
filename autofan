@@ -296,8 +296,8 @@ function_change_fan_speed() {
     fi
     #echo "$program_name: Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
     #echo "Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
-    echo "$program_name: CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
-    echo "CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
+    #echo "$program_name: CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
+    #echo "CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
   fi
 }
 
