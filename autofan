@@ -53,12 +53,12 @@ usage() {
 # pwm1 is usually the cpu fan. You can "cat /sys/class/hwmon/hwmon1/device/fan4_input"
 # to see the current rpm of the fan. If 0 then fan is off or there is no fan connected
 # or motherboard can't read rpm of fan.
-PWM_CONTROLLER=/sys/class/hwmon/hwmon2/pwm1 # Power (speed) setting
-PWM_FAN=/sys/class/hwmon/hwmon2/fan1_input  # Used to track actual rpm values
+PWM_CONTROLLER=/sys/devices/platform/nct6775.2592/hwmon/hwmon2/pwm2 # Power (speed) setting
+PWM_FAN=/sys/devices/platform/nct6775.2592/hwmon/hwmon2/fan2_input  # Used to track actual rpm values
 
 # Temperature boundaries
-TEMP_LOW=35        # Anything this number and below - fan is *off*
-TEMP_HIGH=45       # Anything this number and above - fan is *full*
+TEMP_LOW=30        # Anything this number and below - fan is *off*
+TEMP_HIGH=60       # Anything this number and above - fan is *full*
 
 # Fan speed settings. Run pwmconfig (part of the lm_sensors package) to determine
 # what numbers you want to use for your fan pwm settings. Should not need to
@@ -67,11 +67,11 @@ TEMP_HIGH=45       # Anything this number and above - fan is *full*
 PWM_OFF_OFFSET=30  # Offset on turning off PWM = (PWM_LOW - PWM_OFF_OFFSET)
 PWM_ON_OFFSET=30   # Offset on turning on PWM = (PWM_CALCULATED + PWM_ON_OFFSET)
 PWM_OFF=0          # Off Value (note: many PWM fans will not turn off)
-PWM_LOW=35         # Value to make your fan go slow
+PWM_LOW=65         # Value to make your fan go slow
 PWM_HIGH=255       # Value to make your fan go fast
 
-INTERVAL=5         # The default number of minutes to loop
-EXCLUDE=""         # By default no disks are excluded
+INTERVAL=3         # The default number of minutes to loop
+EXCLUDE="sda,nvme0n1"         # By default no disks are excluded
 #=======================================================================================
 # PROGRAM LOGIC - CHANGE AT YOUR PERIL ;)
 #=======================================================================================
@@ -294,10 +294,10 @@ function_change_fan_speed() {
     else
       REPORTED_TEMP=$HIGHEST_TEMP
     fi
-    #echo "$program_name: Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
-    #echo "Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
-    #echo "$program_name: CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
-    #echo "CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
+     # echo "$program_name: Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
+     # echo "Highest disk temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
+     # echo "$program_name: CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT"
+     # echo "CPU temp is ${REPORTED_TEMP}${TEMP_UNIT}, adjusting fan speed from: $CURRENT_OUTPUT to: $ADJUSTED_OUTPUT" | logger -t$program_name
   fi
 }
 
