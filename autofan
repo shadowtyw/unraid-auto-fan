@@ -57,8 +57,8 @@ PWM_CONTROLLER=/sys/devices/platform/nct6775.2592/hwmon/hwmon2/pwm2 # Power (spe
 PWM_FAN=/sys/devices/platform/nct6775.2592/hwmon/hwmon2/fan2_input  # Used to track actual rpm values
 
 # Temperature boundaries
-TEMP_LOW=30        # Anything this number and below - fan is *off*
-TEMP_HIGH=60       # Anything this number and above - fan is *full*
+TEMP_LOW=45        # Anything this number and below - fan is *off*
+TEMP_HIGH=58       # Anything this number and above - fan is *full*
 
 # Fan speed settings. Run pwmconfig (part of the lm_sensors package) to determine
 # what numbers you want to use for your fan pwm settings. Should not need to
@@ -67,10 +67,10 @@ TEMP_HIGH=60       # Anything this number and above - fan is *full*
 PWM_OFF_OFFSET=30  # Offset on turning off PWM = (PWM_LOW - PWM_OFF_OFFSET)
 PWM_ON_OFFSET=30   # Offset on turning on PWM = (PWM_CALCULATED + PWM_ON_OFFSET)
 PWM_OFF=0          # Off Value (note: many PWM fans will not turn off)
-PWM_LOW=65         # Value to make your fan go slow
+PWM_LOW=80         # Value to make your fan go slow
 PWM_HIGH=255       # Value to make your fan go fast
 
-INTERVAL=3         # The default number of minutes to loop
+INTERVAL=5         # The default number of minutes to loop
 EXCLUDE="sda,nvme0n1"         # By default no disks are excluded
 #=======================================================================================
 # PROGRAM LOGIC - CHANGE AT YOUR PERIL ;)
